@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:grocery_shop_app/pages/home_page.dart';
 
 class IntroPage extends StatelessWidget {
   const IntroPage({super.key});
@@ -19,7 +20,7 @@ class IntroPage extends StatelessWidget {
 
             //we deliver
               Padding(
-              padding: EdgeInsets.all(24.0),
+              padding: const EdgeInsets.all(24.0),
               child: Text(
                 "We deliver groceries at your doorstep",
                 textAlign: TextAlign.center,
@@ -44,10 +45,10 @@ class IntroPage extends StatelessWidget {
 
             //get started button
             GestureDetector(
-              onDoubleTap: () => Navigator.pushReplacement(
+              onTap: () => Navigator.pushReplacement(
                 context, MaterialPageRoute(
                   builder: (context){
-                  return 
+                  return const HomePage();
                 })
               ) ,
               child: Container(
