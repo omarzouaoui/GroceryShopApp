@@ -9,12 +9,24 @@ class CartPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("My Cart Page"),
+        title: const Text('My Cart',
+        style: TextStyle(
+          color: Color.fromARGB(255, 0, 0, 0),
+          fontWeight: FontWeight.bold,
+        ),),
         centerTitle: true,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        iconTheme: const IconThemeData(
+          color:  Colors.black,
+        ),
       ), 
-      body: Consumer<CartModel>(builder: (context, value, child) {
+      body: Consumer<CartModel>(
+        builder: (context, value, child) {
         return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+
             //list of cart item
             Expanded(
               child: ListView.builder(
@@ -49,7 +61,74 @@ class CartPage extends StatelessWidget {
                   );
                 },
                 )
+              ),
+
+              //total + pay now
+              Padding(
+                padding: const EdgeInsets.all(36.0),
+                child: Container(
+                  decoration:  BoxDecoration(
+                    color: Colors.green,
+                    borderRadius: BorderRadius.circular(8)
+                  ),
+                  padding:  EdgeInsets.all(24.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                           Text(
+                        "Total Price",
+                        style: TextStyle(
+                          color: Colors.green.shade100
+                        ),
+                        ),
+
+                        const SizedBox(height: 4,),
+
+                      Text(
+                        "\$ "+value.calculateTotal(),
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold
+                        )
+                        ),
+                        ],
+                      ),
+
+                      //pay now button
+                      Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.green.shade200
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        padding: EdgeInsets.all(12),
+                        child: Row(
+                          children: const [
+                            Text(
+                              "Pay Now",
+                              style: TextStyle(
+                                color: Colors.white
+                              ),
+                            ),
+                            Icon(
+                              Icons.arrow_forward_ios,
+                              size: 16.0,
+                              color: Colors.white,
+                              )
+                          ],
+                        ),
+                      )
+
+                    ],
+                    )
+                ),
               )
+
           ],
         );
       },)
