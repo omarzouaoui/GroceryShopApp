@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:grocery_shop_app/components/grocery_item_tile.dart';
 
 
 class HomePage extends StatelessWidget {
@@ -10,7 +11,6 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
 
              const SizedBox(height: 48,),
@@ -61,7 +61,9 @@ class HomePage extends StatelessWidget {
                 //  childAspectRatio: 0.5,
                  ),
                 itemBuilder: (context, index){
-                  return 
+                  return const GroceryItemTile(
+                    
+                  );
                 }
                 )
               )
